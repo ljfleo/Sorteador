@@ -1,4 +1,3 @@
-
 function gerarNumeroAleatorio(max, min) {
     // essa função gera os números aleatórios de um intervalo x a y
     return parseInt(Math.random() * (max - min) + min + 1);
@@ -11,16 +10,13 @@ function sortearNumeros() {
     let numeroInicial = parseInt(document.getElementById('de').value);
     let numeroFinal = parseInt(document.getElementById('ate').value);
     let quantidadeDeNumeros = document.getElementById('quantidade').value;
-
     while (comecoSorteio < quantidadeDeNumeros) {
         resultado.push(gerarNumeroAleatorio(numeroFinal, numeroInicial))
         comecoSorteio++;
-
     }
     alterarMensagem('resultado', `Os números sorteados são : ${resultado}`);
+    document.getElementById('btn-reiniciar').className = 'container__botao';
 }
-
-
 
 function alterarMensagem(id, texto) {
     // essa função será utilizada para alterar as mensagens no front-end da aplicação
@@ -30,8 +26,15 @@ function alterarMensagem(id, texto) {
 
 function reiniciarJogo() {
     // essa função irá reiniciar o jogo do início
-
+    document.getElementById('btn-reiniciar').className = 'container__botao-desabilitado';
+    limparCampo('resultado');
+    limparCampo('de');
+    limparCampo('ate');
+    limparCampo('quantidade');
+    alterarMensagem('resultado', 'Números sorteados: nenhum até agora');
 }
 
-
-//O usuário precisa escolher uma quantidade de números, e nessa quantidade um intervalo entre x e y para sortear.
+function limparCampo(id) {
+    let campo = document.getElementById(id);
+    campo.value = '';
+}
