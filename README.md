@@ -1,0 +1,1 @@
+O objetivo desse projeto é sortear x número em um intervalo entre y e z.
